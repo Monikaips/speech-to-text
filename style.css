@@ -1,0 +1,128 @@
+:root {
+    --main-bg-color: rgba(255, 255, 255, 0.8);
+    --button-bg-color: #ff7e5f;
+    --button-bg-hover: #feb47b;
+    --text-color: #333;
+    --glass-effect: rgba(255, 255, 255, 0.2);
+    --border-radius: 10px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --transition-time: 0.3s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: var(--text-color);
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    background: var(--glass-effect);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    animation: fadeIn var(--transition-time) ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+   
+}
+
+.converter-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+    padding: 20px;
+    background: url('images/bg.jpeg') no-repeat center center fixed;
+    border-radius: var(--border-radius);
+    color: aliceblue;
+    box-shadow: var(--box-shadow);
+    animation: fadeIn var(--transition-time) ease-in-out;
+}
+
+textarea {
+    width: 50%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    resize: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background-color: var(--button-bg-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-time), transform var(--transition-time);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover, button:focus {
+    background-color: var(--button-bg-hover);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+button i {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    #container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .converter-section {
+        padding: 15px;
+    }
+
+    button {
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+
+    textarea {
+        height: 100px;
+    }
+}

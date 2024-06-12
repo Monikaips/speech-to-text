@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text Converter</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Speech to Text Converter</h1>
+
+        <!-- Speech to Text Section -->
+        <div id="speech-to-text-section" class="converter-section">
+            <h2>Speech to Text Converter</h2>
+            <textarea id="speech_to_txt" placeholder="Your speech will appear here..." readonly></textarea>
+            <div class="button-container">
+                <button onclick="startRecognition()">Start Speech</button>
+                <button onclick="stopRecognition()">Stop</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Speech to Text Functionality
+        var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+
+        recognition.onresult = function(event) {
+            var transcript = '';
+            for (var i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    transcript += event.results[i][0].transcript;
+                } else {
+                    transcript += event.results[i][0].transcript;
+                }
+            }
+            document.getElementById('speech_to_txt').value = transcript;
+        };
+
+        recognition.onerror = function(event) {
+            alert('Error occurred in recognition: ' + event.error);
+        };
+
+        function startRecognition() {
+            document.getElementById('speech_to_txt').value = ''; // Clear previous text
+            recognition.start();
+        }
+
+        function stopRecognition() {
+            recognition.stop();
+        }
+    </script>
+</body>
+</html>
